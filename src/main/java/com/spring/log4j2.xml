@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO" xmlns:xi="http://www.w3.org/2001/XInclude" packages="de.tuhh.tusp">
+
+	<Loggers>
+	    <Root level="ALL" additivity="false">
+	        <AppenderRef  ref="CONSOLE" level="ALL"  />
+	        <Appender-ref ref="ROLLING_FILE" level="ALL" /> 
+	 </Root>
+	   <!--  <Logger name="org.springframework.web.context" level="INFO"  additivity="false">
+	        <Appender-ref ref="CONSOLE" level="INFO" />
+	       <Appender-ref ref="ROLLING_FILE" level="INFO" />
+	    </Logger>
+	    <Logger name="org.springframework.beans.factory" level="INFO"  additivity="false">
+	        <Appender-ref ref="CONSOLE" level="INFO" />
+	        <Appender-ref ref="ROLLING_FILE" level="INFO" />
+	    </Logger>
+	     <Logger name="org.springframework.web.servlet" level="INFO"  additivity="false">
+	        <Appender-ref ref="CONSOLE" level="INFO" />
+	        <Appender-ref ref="ROLLING_FILE" level="INFO" /> 
+	    </Logger> -->
+	    
+	</Loggers>
+
+
+	<Appenders>
+	
+	    <Console name="CONSOLE" target="SYSTEM_OUT">
+	        <PatternLayout
+	            pattern="[%-5level] %d{HH:mm:ss} %c:%L - %msg%n" />
+	    </Console>
+	    
+	    
+	   <RollingFile
+			  name="ROLLING_FILE"
+			  fileName="/home/rztjj/tusp-test.log"
+			  filePattern="/home/rztjj/tusp-%d{yyyy-MM-dd}-%i.log.zip"
+			  ignoreExceptions="false">
+			  
+			  <PatternLayout>
+			      <Pattern>[%-5level] %d{HH:mm:ss} %c:%L - %msg%n</Pattern>
+			  </PatternLayout>
+			 
+			  <Policies>
+			      <SizeBasedTriggeringPolicy size="5 MB" />
+			  </Policies>
+			  <DefaultRolloverStrategy max="5" />
+		</RollingFile>
+	
+	</Appenders>
+	
+	
+</Configuration>
